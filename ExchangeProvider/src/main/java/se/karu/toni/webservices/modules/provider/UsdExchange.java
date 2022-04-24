@@ -1,6 +1,6 @@
 package se.karu.toni.webservices.modules.provider;
 
-import se.karu.toni.webservices.modules.Exchange;
+import se.karu.toni.webservices.modules.interfaces.Exchange;
 
 public class UsdExchange implements Exchange {
 
