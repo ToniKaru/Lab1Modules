@@ -22,6 +22,12 @@
             <artifactId>ExchangeInterface</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>se.karu.toni.webservices.modules</groupId>
+            <artifactId>ExchangeProvider</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>runtime</scope>
+        </dependency>
     </dependencies>
 
 </project>
