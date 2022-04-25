@@ -1,11 +1,21 @@
 package se.karu.toni.webservices.modules.provider;
 
+import se.karu.toni.webservices.modules.interfaces.CurrencyToExchange;
 import se.karu.toni.webservices.modules.interfaces.Exchange;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
+@CurrencyToExchange("euro")
 public class EuroExchange implements Exchange {
-    private final double rate = 1.5d;
+    private double rate = 0;
+    Locale locale = new Locale("sv");
+
     @Override
-    public Double exchangeForCrowns(double amount) {
-        return amount * rate;
+    public String exchangeForCrowns(double amount) {
+        rate = 10.31009d;
+        locale = new Locale("sv", "SV");
+        var crowns = amount * rate;
+        return NumberFormat.getCurrencyInstance(locale).format(crowns);
     }
 }
