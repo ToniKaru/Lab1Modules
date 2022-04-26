@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
-public @interface CurrencyToExchange {
+@Target({ElementType.TYPE,ElementType.METHOD})
+public @interface Currency {
     String value() default "empty";
 }

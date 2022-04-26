@@ -1,12 +1,12 @@
 package se.karu.toni.webservices.modules.provider;
 
-import se.karu.toni.webservices.modules.interfaces.CurrencyToExchange;
+import se.karu.toni.webservices.modules.interfaces.Currency;
 import se.karu.toni.webservices.modules.interfaces.Exchange;
 
 import java.text.NumberFormat;
 import java.util.Locale;
 
-@CurrencyToExchange("usd")
+@Currency("usd")
 public class UsdExchange implements Exchange {
 
     private double rate;
@@ -17,8 +17,9 @@ public class UsdExchange implements Exchange {
         locale = new Locale("en", "EN");
     }
 
+    @Currency("sek")
     @Override
-    public String exchangeForCrowns(double amount) {
+    public String exchangeForCrowns(Double amount) {
         rate = 9.5468d;
         locale = new Locale("sv", "SV");
         var crowns = amount * rate;
