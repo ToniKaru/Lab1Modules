@@ -26,7 +26,8 @@ public class Main {
                 .filter(exchangeProvider -> exchangeProvider.type()
                     .getAnnotation(Currency.class).value()
                     .startsWith(startCurrency))
-                .map(ServiceLoader.Provider::get).toList();
+                .map(ServiceLoader.Provider::get)
+                .toList();
 
             for (Exchange exchange : exchanges) {
                 if (startCurrency.equals("euro")) {
@@ -67,14 +68,41 @@ class Console {
         }
 
         System.out.println("0. Ingen ovan");
-        var choice = scanner.nextInt();
+        var choice = getChoice();
 
         return annotations.get(choice);
     }
 
+    private static int getChoice() {
+        var enteredChoice = scanner.nextLine();
+        int checkedChoice;
+        if (enteredChoice == null){
+            return 0;
+        }
+        try {
+            checkedChoice = Integer.parseInt(enteredChoice);
+        } catch (NumberFormatException e) {
+            return 0;
+        }
+        return checkedChoice;
+    }
+
     public static double getAmount() {
         System.out.println("Beloppet:");
-        var amount = scanner.nextDouble();
-        return amount;
+        return getVerifiedAmount();
+    }
+
+
+    private static double getVerifiedAmount() {
+        var enteredAmount = scanner.nextLine();
+        double checkedAmount;
+        if (enteredAmount == null)
+            return 0;
+        try {
+            checkedAmount = Double.parseDouble(enteredAmount);
+        } catch (NumberFormatException e) {
+            return 0;
+        }
+        return checkedAmount;
     }
 }
